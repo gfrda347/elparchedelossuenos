@@ -1,14 +1,12 @@
 from datetime import date, datetime, timedelta
 
-# Define las constantes
 NUM_HABITACIONES = 100
 
-# Define las clases
 class Usuario:
     def __init__(self, nombre_usuario, contrasena):
         self.nombre_usuario = nombre_usuario
         self.contrasena = contrasena
-        self.reservas = []  # Agrega una lista para llevar un registro de reservas
+        self.reservas = []  
 
     def cancelar_reserva(self, reserva):
         if reserva in self.reservas:
@@ -22,7 +20,7 @@ class Habitacion:
         self.numero = numero
         self.tipo = tipo
         self.precio = precio
-        self.fechas_ocupadas = []  # Agrega una lista para llevar un registro de fechas ocupadas
+        self.fechas_ocupadas = [] 
 
 class Reserva:
     def __init__(self, usuario, fecha_inicio, fecha_fin, habitaciones):
@@ -31,7 +29,6 @@ class Reserva:
         self.fecha_fin = fecha_fin
         self.habitaciones = habitaciones
 
-# Define las variables globales
 usuarios = [
     Usuario("victor", "doble123"),
     Usuario("santiago", "12345"),
@@ -71,7 +68,7 @@ def elegir_habitacion(habitaciones):
             seleccion = int(input("Elige el número de la habitación que deseas (0 para cancelar): "))
             
             if seleccion == 0:
-                return None  # El usuario canceló la selección
+                return None  
             
             habitacion_elegida = next((habitacion for habitacion in habitaciones if habitacion.numero == seleccion), None)
             
@@ -123,17 +120,13 @@ def cliente_cancelar_reserva(usuario):
     opcion = int(input("Ingresa el número de la reserva que deseas cancelar (0 para cancelar): "))
     
     if opcion == 0:
-        return  # El usuario canceló la operación
+        return  
 
     if opcion > 0 and opcion <= len(usuario.reservas):
-                reserva_a_cancelar = usuario.reservas.pop(opcion - 1)  # Eliminar la reserva de la lista
+                reserva_a_cancelar = usuario.reservas.pop(opcion - 1) 
                 print("Reserva cancelada exitosamente.")
     else:
         print("Opción no válida.")
-
-
-
-
 
 class Hotel:
     def __init__(self, nombre, ubicacion, instalaciones, servicios):
@@ -153,7 +146,6 @@ class Hotel:
             informacion += f"- {servicio}\n"
         return informacion
 
-# Crear una instancia de Hotel con la información del hotel
 hotel_informacion = Hotel(
     nombre="El Parche de los Sueños",
     ubicacion="Medellín",
@@ -162,7 +154,6 @@ hotel_informacion = Hotel(
 )
 print(hotel_informacion.obtener_informacion_hotel())
 
-# Prueba de las funciones
 def iniciar_sesion(nombre_usuario, contrasena):
     for usuario in usuarios:
         if usuario.nombre_usuario == nombre_usuario and usuario.contrasena == contrasena:
@@ -209,7 +200,6 @@ if habitacion_elegida:
 else:
     print("Selección cancelada por el usuario.")
 
-# Menú para que el cliente realice acciones adicionales
 while True:
     print("\nMenú de Cliente:")
     print("1. Verificar estado de una habitación")
@@ -230,9 +220,6 @@ while True:
     else:
         print("Opción no válida.")
 
-# (código anterior)
-
-# Menú para que el cliente realice acciones adicionales
 while True:
     print("\nMenú de Cliente:")
     print("1. Verificar estado de una habitación")
